@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kết quả phân tích</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Kết quả phân tích</h1>
+        <p><strong>Cảm xúc nhận diện:</strong> {{ emotion }}</p>
+        <h2>Gợi ý nhạc</h2>
+        <ul>
+            {% for song in music %}
+                <li>{{ song }}</li>
+            {% endfor %}
+        </ul>
+        <a href="/">Phân tích văn bản khác</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,291 @@
+/* Cài đặt font và màu nền chung cho toàn bộ trang */
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: #f0f4f8;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Chiếm toàn bộ chiều cao màn hình */
+    background: linear-gradient(135deg, #f0f4f8, #d9e2ec); /* Màu nền chuyển gradient */
+}
+
+/* Cải tiến container */
+.container {
+    max-width: 800px;
+    width: 100%;
+    margin: 50px auto;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Animation cho sự xuất hiện của container */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Tiêu đề */
+h1, h2 {
+    text-align: center;
+    color: #4CAF50;
+    font-weight: 600;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Định dạng form */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Định dạng cho label */
+label {
+    margin: 12px 0 6px;
+    font-weight: 500;
+    color: #555;
+}
+
+/* Định dạng cho textarea */
+textarea {
+    resize: none;
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #fafafa;
+}
+
+/* Thêm hiệu ứng focus cho textarea */
+textarea:focus {
+    border-color: #4CAF50;
+    outline: none;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
+}
+
+/* Định dạng cho nút submit */
+button {
+    margin-top: 20px;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-weight: 500;
+}
+
+/* Hiệu ứng hover và click cho button */
+button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(1);
+}
+
+/* Định dạng cho link */
+a {
+    display: block;
+    text-align: center;
+    margin-top: 25px;
+    color: #007BFF;
+    font-size: 1rem;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+/* Responsive cho màn hình nhỏ */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+    
+    h1, h2 {
+        font-size: 1.6rem;
+    }
+    
+    textarea {
+        font-size: 0.9rem;
+    }
+    
+    button {
+        font-size: 1rem;
+    }
+}
+
+/* Cải tiến thanh audio */
+audio {
+    width: 100%;
+    max-width: 500px;
+    margin-top: 20px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    background-color: #f5f5f5;
+    transition: all 0.3s ease;
+}
+
+audio:hover {
+    background-color: #e0e0e0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+audio:playing {
+    border-color: #4CAF50;
+}
+
+#musicList {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+/* Các hiệu ứng khi hover vào phần tử */
+button, a, textarea {
+    transition: all 0.3s ease;
+}
+
+button:hover, a:hover {
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(1);
+}
+
+/* --- History Section --- */
+.history-container {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect for history container */
+.history-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+}
+
+.history-container h3 {
+    text-align: center;
+    color: #4CAF50;
+    font-weight: 600;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* History list styles */
+ul.history-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* History item styles */
+ul.history-list li {
+    background-color: #fafafa;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    margin: 10px 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+ul.history-list li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Date styling for each history item */
+ul.history-list li .history-date {
+    font-size: 0.9rem;
+    color: #888;
+    text-align: right;
+    margin-top: 5px;
+}
+
+/* Emotion styling for each history item */
+ul.history-list li .history-emotion {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #4CAF50;
+    margin-bottom: 10px;
+}
+
+/* Button to clear history */
+.clear-history-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 24px;
+    background-color: #FF5252;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-weight: 500;
+}
+
+/* Hover effect for clear history button */
+.clear-history-btn:hover {
+    background-color: #e64a46;
+    transform: scale(1.05);
+}
+
+.clear-history-btn:active {
+    transform: scale(1);
+}
+
+/* Responsive adjustments for history section */
+@media (max-width: 768px) {
+    .history-container {
+        padding: 15px;
+    }
+
+    .history-container h3 {
+        font-size: 1.5rem;
+    }
+
+    ul.history-list li {
+        padding: 12px;
+    }
+}

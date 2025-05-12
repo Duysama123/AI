@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhận diện cảm xúc</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Nhận diện cảm xúc từ văn bản</h1>
+        <form id="emotionForm">
+            <label for="text">Nhập văn bản của bạn:</label>
+            <textarea id="text" name="text" rows="4" placeholder="Nhập nội dung tại đây..."></textarea>
+            <button type="submit">Phân tích cảm xúc</button>
+        </form>
+
+        <!-- Kết quả phân tích -->
+        <div id="result" style="display:none;">
+            <h2>Kết quả phân tích</h2>
+            <p><strong>Cảm xúc nhận diện:</strong> <span id="emotion"></span></p>
+            <h3>Gợi ý nhạc</h3>
+            <ul id="musicList"></ul>
+            <audio id="musicPlayer" controls style="display: none;">
+                <source id="musicSource" type="audio/mp3">
+                Your browser does not support the audio element.
+            </audio>
+            <a href="#" id="analyzeAnother">Phân tích văn bản khác</a>
+        </div>
+    </div>
+
+    <script>
+       $(document).ready(function() {
+    // Khi form được gửi, thực hiện AJAX
+    $('#emotionForm').submit(function(e) {
+        e.preventDefault(); // Ngăn chặn form gửi lại trang
+
+        var text = $('#text').val(); // Lấy nội dung văn bản từ textarea
+
+        // Gửi dữ liệu đến server thông qua AJAX
+        $.ajax({
+            url: '/analyze', // URL xử lý form
+            type: 'POST',
+            data: { text: text },
+            success: function(response) {
+                if (response.error) {
+                    alert(response.error); // Hiển thị thông báo lỗi
+                } else {
+                    // Hiển thị kết quả phân tích
+                    $('#emotion').text(response.emotion);
+
+                    // Ẩn tất cả phần tử trước
+                    $('#musicList').empty();
+
+                    // Tạo thẻ audio để phát nhạc
+                    var audioHtml = '<audio controls autoplay>';
+                    audioHtml += '<source src="/static/' + response.music_filename + '" type="audio/mp3">';
+                    audioHtml += 'Your browser does not support the audio element.';
+                    audioHtml += '</audio>';
+
+                    // Thêm thẻ audio vào trong phần tử musicList
+                    $('#musicList').append(audioHtml);
+
+                    // Hiển thị kết quả và ẩn form
+                    $('#result').show();
+                    $('#emotionForm').hide();
+                }
+            },
+            error: function() {
+                alert('Có lỗi xảy ra. Vui lòng thử lại sau!');
+            }
+        });
+    });
+
+    // Để người dùng có thể phân tích lại văn bản
+    $('#analyzeAnother').click(function() {
+        $('#result').hide();
+        $('#emotionForm').show();
+        $('#text').val(''); // Xóa nội dung trong textarea
+        $('#musicList').empty(); // Xóa nhạc đang phát
+    });
+});
+
+    </script>
+</body>
+</html>
